@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCP Foundation — Внутренняя почта — Сообщение #RSCH-4471-0930</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* === WARNING BAR === */
+        #warning-bar {
+            background-color: #900;
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: blink 3s infinite;
+        }
+
+        @keyframes blink {
+            0%, 90%, 100% { opacity: 1; }
+            95% { opacity: 0.5; }
+        }
+
+        #warning-bar-content {
+            font-size: 10px;
+            margin-top: 2px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        /* === TOP BAR === */
+        #top-bar {
+            background-color: #fff;
+            border-bottom: 1px solid #ccc;
+            padding: 0;
+        }
+
+        #top-bar ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        #top-bar ul li {
+            position: relative;
+        }
+
+        #top-bar ul li a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-right: 1px solid #ddd;
+        }
+
+        #top-bar ul li a:hover {
+            background-color: #f4f4f4;
+            color: #900;
+        }
+
+        /* === HEADER === */
+        #header {
+            background: #fff;
+            padding: 20px 30px;
+            border-bottom: 3px solid #900;
+            display: flex;
+            align-items: center;
+        }
+
+        #header h1 {
+            font-size: 28px;
+            color: #333;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        #header h1 span {
+            color: #900;
+        }
+
+        #header .subtitle {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #header .logo-area {
+            margin-right: 25px;
+        }
+
+        .scp-logo {
+            width: 70px;
+            height: 70px;
+            border: 3px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: #900;
+            background: #fff;
+            position: relative;
+        }
+
+        .scp-logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #333;
+            border-radius: 50%;
+            top: -5px;
+            left: -5px;
+            transform: scale(1.15);
+        }
+
+        /* === КОНТЕЙНЕР === */
+        #container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* === БОКОВАЯ ПАНЕЛЬ === */
+        #side-bar {
+            width: 220px;
+            min-width: 220px;
+            padding: 15px;
+            border-right: 1px solid #ddd;
+            background: #f9f9f9;
+            font-size: 12px;
+        }
+
+        #side-bar .heading {
+            font-size: 13px;
+            font-weight: bold;
+            color: #900;
+            border-bottom: 1px solid #900;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        #side-bar .heading:first-child {
+            margin-top: 0;
+        }
+
+        #side-bar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+
+        #side-bar ul li {
+            padding: 3px 0;
+        }
+
+        #side-bar ul li a {
+            color: #036;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        #side-bar ul li a:hover {
+            text-decoration: underline;
+            color: #900;
+        }
+
+        #side-bar hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        #side-bar .info-row {
+            padding: 4px 0;
+            font-size: 12px;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        #side-bar .info-row:last-child {
+            border-bottom: none;
+        }
+
+        #side-bar .info-label {
+            color: #666;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* === ОСНОВНАЯ ОБЛАСТЬ === */
+        #main-content {
+            flex: 1;
+            padding: 20px 30px;
+        }
+
+        /* === ХЛЕБНЫЕ КРОШКИ === */
+        .breadcrumbs {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .breadcrumbs a {
+            color: #036;
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+            color: #900;
+        }
+
+        .breadcrumbs .sep {
+            margin: 0 6px;
+            color: #999;
+        }
+
+        .breadcrumbs .current {
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* === ПАНЕЛЬ ДЕЙСТВИЙ === */
+        .action-bar {
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 8px 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 2px;
+        }
+
+        .action-bar .btn {
+            background: #fff;
+            border: 1px solid #aaa;
+            padding: 5px 12px;
+            font-size: 11px;
+            cursor: pointer;
+            color: #333;
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .action-bar .btn:hover {
+            background: #900;
+            color: #fff;
+            border-color: #900;
+        }
+
+        .action-bar .btn-primary {
+            background: #900;
+            color: #fff;
+            border-color: #700;
+            font-weight: bold;
+        }
+
+        .action-bar .btn-primary:hover {
+            background: #700;
+        }
+
+        .action-bar .nav-arrows {
+            margin-left: auto;
+            display: flex;
+            gap: 5px;
+        }
+
+        .action-bar .nav-arrows .btn {
+            padding: 5px 10px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* === КАРТОЧКА ПИСЬМА === */
+        .mail-card {
+            border: 1px solid #ccc;
+            background: #fff;
+            margin-bottom: 20px;
+        }
+
+        .mail-header {
+            background: linear-gradient(to bottom, #f9f9f9, #eee);
+            border-bottom: 1px solid #ccc;
+            padding: 15px 20px;
+        }
+
+        .mail-subject {
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .mail-subject .classification {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .class-top-secret {
+            background: #000;
+            color: #fff;
+        }
+
+        .class-secret {
+            background: #c00;
+            color: #fff;
+        }
+
+        .class-confidential {
+            background: #c90;
+            color: #fff;
+        }
+
+        .class-unclassified {
+            background: #4a4;
+            color: #fff;
+        }
+
+        .mail-meta {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 6px 12px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .mail-meta .label {
+            color: #666;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            padding-top: 2px;
+        }
+
+        .mail-meta .value {
+            color: #333;
+        }
+
+        .mail-meta .value a {
+            color: #036;
+            text-decoration: none;
+        }
+
+        .mail-meta .value a:hover {
+            text-decoration: underline;
+            color: #900;
+        }
+
+        .mail-meta .sender-badge {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            font-size: 9px;
+            padding: 1px 6px;
+            border-radius: 2px;
+            margin-left: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            vertical-align: middle;
+        }
+
+        .mail-meta .sender-badge.o5 {
+            background: #900;
+        }
+
+        /* === ПРЕДУПРЕЖДЕНИЕ О СЕКРЕТНОСТИ === */
+        .security-banner {
+            background: #fff3cd;
+            border-left: 4px solid #900;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .security-banner .icon {
+            font-size: 18px;
+            color: #900;
+        }
+
+        .security-banner strong {
+            color: #900;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .security-banner .encryption-info {
+            margin-left: auto;
+            font-size: 10px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* === ТЕЛО ПИСЬМА === */
+        .mail-body {
+            padding: 25px 30px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #222;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .mail-body p {
+            margin-bottom: 14px;
+        }
+
+        .mail-body .greeting {
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .mail-body .signature {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .mail-body .signature strong {
+            color: #333;
+            display: block;
+            font-size: 13px;
+        }
+
+        .mail-body .signature .sig-title {
+            color: #900;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .mail-body .sig-contact {
+            margin-top: 6px;
+            font-size: 11px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* === REDACTED === */
+        .redacted {
+            background: #000;
+            color: #000;
+            padding: 0 3px;
+            border-radius: 1px;
+            cursor: not-allowed;
+            user-select: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .redacted:hover::after {
+            content: ' [ДОПУСК УРОВНЯ 4+ ТРЕБУЕТСЯ]';
+            color: #900;
+            background: #fff;
+            font-size: 9px;
+            font-weight: bold;
+            padding: 1px 4px;
+            border: 1px solid #900;
+            margin-left: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .redacted-block {
+            background: #000;
+            color: #000;
+            padding: 10px 15px;
+            margin: 12px 0;
+            border-left: 3px solid #900;
+            user-select: none;
+            position: relative;
+        }
+
+        .redacted-block::after {
+            content: '⚠ ДАННЫЕ ЗАСЕКРЕЧЕНЫ ПО ПРОТОКОЛУ O5-Μ';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #900;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            background: rgba(255,255,255,0.9);
+            padding: 3px 10px;
+            border: 1px solid #900;
+        }
+
+        /* === БЛОК ИНЦИДЕНТА === */
+        .incident-box {
+            background: #fff5f5;
+            border: 1px solid #c00;
+            border-left: 4px solid #900;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+
+        .incident-box .incident-title {
+            font-weight: bold;
+            color: #900;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .incident-box .incident-title::before {
+            content: '⚠';
+            font-size: 16px;
+        }
+
+        .incident-box table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .incident-box table td {
+            padding: 4px 8px;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        .incident-box table td:first-child {
+            font-weight: bold;
+            color: #666;
+            width: 180px;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* === ВЛОЖЕНИЯ === */
+        .attachments {
+            background: #f9f9f9;
+            border-top: 1px solid #ddd;
+            padding: 15px 30px;
+        }
+
+        .attachments-title {
+            font-size: 11px;
+            font-weight: bold;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .attachments-title::before {
+            content: '📎';
+        }
+
+        .attachment-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .attachment-item {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 220px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .attachment-item:hover {
+            border-color: #900;
+            background: #fff5f5;
+        }
+
+        .attachment-icon {
+            width: 36px;
+            height: 36px;
+            background: #333;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .attachment-icon.pdf { background: #c00; }
+        .attachment-icon.img { background: #036; }
+        .attachment-icon.doc { background: #036; }
+        .attachment-icon.enc { background: #000; }
+
+        .attachment-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .attachment-name {
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .attachment-meta {
+            font-size: 10px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .attachment-lock {
+            font-size: 14px;
+            color: #900;
+        }
+
+        /* === ИСТОРИЯ ПЕРЕПИСКИ === */
+        .mail-history {
+            padding: 20px 30px;
+            background: #fafafa;
+            border-top: 1px solid #ddd;
+        }
+
+        .history-title {
+            font-size: 11px;
+            font-weight: bold;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .history-title::before {
+            content: '💬';
+        }
+
+        .history-title .toggle {
+            margin-left: auto;
+            font-size: 10px;
+            color: #036;
+        }
+
+        .history-message {
+            border-left: 3px solid #ccc;
+            padding: 10px 15px;
+            margin-bottom: 12px;
+            background: #fff;
+            font-size: 12px;
+        }
+
+        .history-message.current {
+            border-left-color: #900;
+            background: #fff5f5;
+        }
+
+        .history-meta {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 6px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .history-meta strong {
+            color: #333;
+        }
+
+        .history-meta .time {
+            color: #999;
+            font-family: 'Courier New', monospace;
+        }
+
+        .history-body {
+            color: #444;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .history-body .quote {
+            border-left: 2px solid #ddd;
+            padding-left: 10px;
+            color: #666;
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        /* === НИЖНЯЯ ПАНЕЛЬ ДЕЙСТВИЙ === */
+        .bottom-actions {
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reply-box {
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+
+        .reply-header {
+            background: #f4f4f4;
+            border-bottom: 1px solid #ccc;
+            padding: 8px 15px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .reply-body {
+            padding: 15px;
+        }
+
+        .reply-body textarea {
+            width: 100%;
+            height: 120px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 12px;
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            resize: vertical;
+        }
+
+        .reply-footer {
+            background: #f9f9f9;
+            border-top: 1px solid #ccc;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reply-footer .btn {
+            background: #fff;
+            border: 1px solid #aaa;
+            padding: 5px 14px;
+            font-size: 11px;
+            cursor: pointer;
+            color: #333;
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .reply-footer .btn:hover {
+            background: #900;
+            color: #fff;
+            border-color: #900;
+        }
+
+        .reply-footer .btn-send {
+            background: #900;
+            color: #fff;
+            border-color: #700;
+            font-weight: bold;
+        }
+
+        .reply-classification {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .reply-classification strong {
+            color: #900;
+        }
+
+        /* === ФУТЕР === */
+        #footer {
+            background: #333;
+            color: #999;
+            text-align: center;
+            padding: 15px;
+            font-size: 10px;
+            margin-top: 30px;
+            border-top: 3px solid #900;
+        }
+
+        #footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        #footer a:hover {
+            color: #fff;
+        }
+
+        /* === АДАПТИВНОСТЬ === */
+        @media (max-width: 768px) {
+            #container {
+                flex-direction: column;
+            }
+            #side-bar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+            .mail-meta {
+                grid-template-columns: 1fr;
+            }
+            .mail-meta .label {
+                margin-top: 8px;
+            }
+            .mail-body, .attachments, .mail-history {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- WARNING BAR -->
+<div id="warning-bar">
+    ⚠ ВНИМАНИЕ: БАЗА ДАННЫХ ФОНДА ЗАСЕКРЕЧЕНА — УРОВЕНЬ ДОПУСКА НЕОБХОДИМ
+    <div id="warning-bar-content">Несанкционированный доступ будет отслежен, нарушители будут найдены и задержаны</div>
+</div>
+
+<!-- TOP BAR -->
+<div id="top-bar">
+    <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">Облако</a></li>
+        <li><a href="#">Почта</a></li>
+        <li><a href="#">Календарь</a></li>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="#">Справочник</a></li>
+        <li><a href="#">Создать письмо</a></li>
+    </ul>
+</div>
+
+<!-- HEADER -->
+<div id="header">
+    <div class="logo-area">
+        <div class="scp-logo">SCP</div>
+    </div>
+    <div>
+        <h1>SCP Foundation — <span>Внутренняя почта</span></h1>
+        <div class="subtitle">Secure Communication Network • Уровень допуска: 3</div>
+    </div>
+</div>
+
+<!-- КОНТЕЙНЕР -->
+<div id="container">
+
+    <!-- БОКОВАЯ ПАНЕЛЬ -->
+    <div id="side-bar">
+        <div class="heading">📧 Почтовые папки</div>
+        <ul>
+            <li><a href="#">📥 Входящие</a></li>
+            <li><a href="#">📤 Отправленные</a></li>
+            <li><a href="#">📝 Черновики</a></li>
+            <li><a href="#">⭐ Помеченные</a></li>
+            <li><a href="#">🗑 Корзина</a></li>
+            <li><a href="#">🚫 Спам / Аномальное</a></li>
+        </ul>
+
+        <hr>
+
+        <div class="heading">📋 Информация о сообщении</div>
+        <div class="info-row">
+            <div class="info-label">ID сообщения</div>
+            <div><code style="font-size:10px;">RSCH-4471-0930</code></div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Поток</div>
+            <div><a href="#">INC-17-████</a></div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Шифрование</div>
+            <div style="color:#4a4; font-weight:bold;">SCR-7 ✓</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Подпись</div>
+            <div style="color:#4a4; font-weight:bold;">Цифровая ✓</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Получено</div>
+            <div>30.06.2026 09:14</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Размер</div>
+            <div>4.2 KB (+ 18.4 MB)</div>
+        </div>
+
+        <hr>
+
+        <div class="heading">⚙ Действия</div>
+        <ul>
+            <li><a href="#" onclick="openReply()">↩ Ответить</a></li>
+            <li><a href="#">↪ Ответить всем</a></li>
+            <li><a href="#">⇄ Переслать</a></li>
+            <li><a href="#">📁 В архив</a></li>
+            <li><a href="#">🚩 Пометить</a></li>
+            <li><a href="#">🖨 Печать</a></li>
+            <li><a href="#" style="color:#900;">🗑 Удалить</a></li>
+        </ul>
+
+        <hr>
+
+        <div class="heading">👤 Отправитель</div>
+        <div class="info-row">
+            <div class="info-label">Имя</div>
+            <div><strong>Д-р Камерон</strong></div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Должность</div>
+            <div>Ведущий научный сотрудник</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Допуск</div>
+            <div style="color:#900; font-weight:bold;">Уровень 3 / 1000</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">ID</div>
+            <div><code style="font-size:10px;">546-3-3535</code></div>
+        </div>
+    </div>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div id="main-content">
+
+        <!-- ХЛЕБНЫЕ КРОШКИ -->
+        <div class="breadcrumbs">
+            <a href="#">Почта</a>
+            <span class="sep">›</span>
+            <a href="#">Входящие</a>
+            <span class="sep">›</span>
+            <span class="current">Сообщение #RSCH-4471-0930</span>
+        </div>
+
+        <!-- ПАНЕЛЬ ДЕЙСТВИЙ -->
+        <div class="action-bar">
+            <a href="#" class="btn btn-primary">↩ Ответить</a>
+            <a href="#" class="btn">↪ Всем</a>
+            <a href="#" class="btn">⇄ Переслать</a>
+            <a href="#" class="btn">📁 Архив</a>
+            <a href="#" class="btn">🖨 Печать</a>
+            <div class="nav-arrows">
+                <a href="#" class="btn" title="Предыдущее">◀</a>
+                <a href="#" class="btn" title="Следующее">▶</a>
+                <a href="#" class="btn" title="К списку">✕</a>
+            </div>
+        </div>
+
+        <!-- КАРТОЧКА ПИСЬМА -->
+        <div class="mail-card">
+
+            <!-- ЗАГОЛОВОК ПИСЬМА -->
+            <div class="mail-header">
+                <div class="mail-subject">
+                    Уточнение по массиву NASA (2025) / Запрос старых логов
+                    <span class="classification class-confidential">Конфиденциально</span>
+                </div>
+
+                <div class="mail-meta">
+                    <div class="label">От:</div>
+                    <div class="value">
+                        <strong>Д-р Камерон</strong>
+                        <span class="sender-badge o5">Ведущий научный сотрудник</span>
+                        &lt;Kameron.Wilm@scp.foundation&gt;
+                    </div>
+
+                    <div class="label">Кому:</div>
+                    <div class="value">
+                        Д-р Фрэнсис Оун (RSCH-4471)
+                    </div>
+
+                    <div class="label">Копия:</div>
+                    <div class="value">
+                        Отдел внутренней безопасности
+                    </div>
+
+                    <div class="label">Дата:</div>
+                    <div class="value">30 июня 2026 г., 09:14:27 MSK</div>
+
+                    <div class="label">Тема:</div>
+                    <div class="value">Re: Переданные отчеты NASA (2025) → <strong>Уточнение по массиву NASA (2025) / Запрос старых логов</strong></div>
+
+                    <div class="label">Приоритет:</div>
+                    <div class="value" style="color:#090; font-weight:bold;">НИЗКИЙ — Не требует срочного ответа</div>
+                </div>
+            </div>
+
+            <!-- БАННЕР БЕЗОПАСНОСТИ -->
+            <div class="security-banner">
+                <span class="icon">🔒</span>
+                <div>
+                    <strong>Защищённое сообщение.</strong>
+                    Распространение за пределами указанного списка получателей запрещено протоколом <strong>SCR-7.4.b</strong>.
+                    Любая попытка копирования, пересылки или цитирования регистрируется системой <strong>ARGUS-9</strong>.
+                </div>
+                <div class="encryption-info">
+                    AES-512 | ID: 7F3A-████-9E21
+                </div>
+            </div>
+
+            <!-- ТЕЛО ПИСЬМА -->
+            <div class="mail-body">
+
+                <p class="greeting">Д-р Фрэнсис Оун,</p>
+
+                <p>
+                    Прошу прощения за неформальное обращение и намеренно заниженные теги важности этого письма. Я специально пометил его как «НИЗКИЙ»,
+                    чтобы обойти алгоритмы внутреннего мониторинга и не привлекать внимание Отдела Внутренней Безопасности.
+                    У меня есть серьезные подозрения, что наши основные каналы связи с высоким приоритетом сейчас находятся на усиленной прослушке.
+                    Я не хочу поднимать шум и светиться в отчетах, пока не буду абсолютно, на сто процентов уверен в своих выводах.
+                </p>
+
+                <p>
+                    Я сейчас разбираю пакет астрофизических данных от NASA за 2025 год, который нам передали на прошлой неделе, и,
+                    честно говоря, у меня руки трясутся. Фрэнсис, там аномалии.
+                    И это не просто погрешность сенсоров или сбой калибровки их новых телескопов.
+                </p>
+
+                <p>
+                    Общая температура в наблюдаемых космических секторах начала устойчиво снижаться. Сначала я думал, что это артефакт обработки, но я прогнал сырые данные через три независимых алгоритма и вручную проверил телеметрию с трех разных зондов. Падение реальное. Оно не вписывается ни в одну из известных нам термодинамических моделей, и, что самое страшное, отклонение растет с каждым часом.
+                </p>
+
+                <p>
+                    Я хочу понять, с чем мы имеем дело, прежде чем я доложу об этом официально. Если это то, о чем я думаю, нам нужно смотреть в прошлое. Насколько мне известно, в архивах заброшенной Зоны-137 хранятся не оцифрованные, бумажные носители и старые сырые логи по аналогичным термоклиматическим сдвигам.
+                </p>
+
+                <p>
+                    Нужно, чтобы ты добыл эти архивные документы. Твоего положения должно хватить, чтобы тихо организовать доступ без лишних вопросов из RAISA. Мне нужен этот материал для более общего, комплексного анализа. Если мои догадки верны, Зона-137 уже сталкивалась с чем-то подобным, и мне нужно найти паттерн.
+                </p>
+
+                <p>
+                    Сейчас нахожусь в Зоне-247, и здесь сейчас в коридорах слишком много лишних глаз, а сотрудники службы безопасности ходят чаще, чем обычно. Я параноик, возможно, но я лучше перестрахуюсь. Пожалуйста, сделай это через твой личный защищенный канал, без использования официальных бланков запросов.
+                </p>
+
+                <p>
+                    Если я прав, у нас могут быть очень серьезные проблемы, но мне нужны железные доказательства, прежде чем я пойду к О5.
+                </p>
+
+                <p>
+                    Жду твоего ответа. И, пожалуйста, не звони мне по внутренней связи. Пиши только сюда.
+                </p>
+
+                <!-- ПОДПИСЬ -->
+                <div class="signature">
+                    <strong>Д-р Камерон</strong>
+                    <div class="sig-title">Ведущий научный сотрудник • Фонд SCP</div>
+                    <div class="sig-contact">
+                        Канал: 546-3-3535 / Закрытый контур<br>
+                        Ключ подписи: 0x7F3A████9E21 (RSA-4096)<br>
+                        «Невообразимое содержится.thinkable обрабатывается.»
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <!-- БЫСТРЫЙ ОТВЕТ -->
+        <div class="reply-box">
+            <div class="reply-header">↩ Быстрый ответ (шифрование SCR-7)</div>
+            <div class="reply-body">
+                <textarea placeholder="Введите ответ...&#10;&#10;Помните: данное сообщение адресовано отправителю и всем получателям исходной переписки. Уровень классификации ответа не может превышать уровень исходного сообщения."></textarea>
+            </div>
+            <div class="reply-footer">
+                <div class="reply-classification">
+                    Классификация ответа: <strong>Совершенно секретно</strong> (наследовано)
+                </div>
+                <div>
+                    <button class="btn">Сохранить черновик</button>
+                    <button class="btn">⇄ Переслать</button>
+                    <button class="btn btn-send">🔒 Отправить защищённо</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- НИЖНЯЯ ПАНЕЛЬ ДЕЙСТВИЙ -->
+        <div class="bottom-actions">
+            <a href="#" class="btn">◀ Предыдущее сообщение</a>
+            <a href="#" class="btn">▶ Следующее сообщение</a>
+            <a href="#" class="btn" style="margin-left:auto;">✕ Вернуться во «Входящие»</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- ФУТЕР -->
+<div id="footer">
+    <p>SCP Foundation Internal Mail System v4.7.1 | Secure Communication Network</p>
+    <p style="margin-top:5px;">
+        <a href="#">Политика безопасности</a> |
+        <a href="#">Протокол шифрования SCR-7</a> |
+        <a href="#">Техподдержка</a> |
+        <a href="#">Сообщить об утечке</a>
+    </p>
+    <p style="margin-top:8px; color:#666;">
+        Содержимое данной системы является собственностью Фонда SCP. Несанкционированный доступ карается в соответствии с Протоколом 12-Альфа.
+    </p>
+    <p style="margin-top:5px; color:#555;">
+        unless otherwise noted, the license is <a href="#">CC BY-SA 3.0</a>
+    </p>
+</div>
+
+</body>
+</html>
